@@ -5,22 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>링크 모음</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
+    * { box-sizing: border-box; }
     body {
       font-family: "Apple SD Gothic Neo", sans-serif;
       background-color: #f5f5f5;
       margin: 0;
       padding: 20px;
     }
-
     .container {
       max-width: 640px;
       margin: 0 auto;
     }
-
     .box {
       background-color: #ffffff;
       border: 2px solid #dcdcdc;
@@ -34,11 +29,7 @@
       cursor: pointer;
       transition: background-color 0.2s ease;
     }
-
-    .box:hover {
-      background-color: #f0f0f0;
-    }
-
+    .box:hover { background-color: #f0f0f0; }
     .product-link {
       display: block;
       background-color: #e9f5ff;
@@ -53,16 +44,11 @@
       font-size: 16px;
       text-align: center;
     }
-
-    .product-link:hover {
-      background-color: #d4ecff;
-    }
-
+    .product-link:hover { background-color: #d4ecff; }
     .nav-buttons {
       margin-top: 30px;
       text-align: center;
     }
-
     .nav-buttons button {
       background-color: #ddd;
       border: none;
@@ -73,26 +59,11 @@
       cursor: pointer;
       transition: background-color 0.2s ease;
     }
-
-    .nav-buttons button:hover {
-      background-color: #ccc;
-    }
-
+    .nav-buttons button:hover { background-color: #ccc; }
     @media (max-width: 480px) {
-      .box {
-        font-size: 16px;
-        padding: 16px;
-      }
-
-      .product-link {
-        font-size: 15px;
-        padding: 12px 14px;
-      }
-
-      .nav-buttons button {
-        font-size: 13px;
-        padding: 8px 14px;
-      }
+      .box { font-size: 16px; padding: 16px; }
+      .product-link { font-size: 15px; padding: 12px 14px; }
+      .nav-buttons button { font-size: 13px; padding: 8px 14px; }
     }
   </style>
 </head>
@@ -105,25 +76,17 @@
       <div class="box" onclick="show('health')">📁 건강</div>
     </div>
 
-    <!-- 일상 > 여름 -->
+    <!-- 📁 일상 하위 -->
     <div id="daily" style="display:none;">
       <div class="box" onclick="show('summer')">🌞 여름</div>
+      <div class="box" onclick="show('electronics')">📱 전자제품</div>
       <div class="nav-buttons">
         <button onclick="back()">⬅ 이전</button>
         <button onclick="home()">🏠 처음으로</button>
       </div>
     </div>
 
-    <!-- 건강 > 영양제 -->
-    <div id="health" style="display:none;">
-      <div class="box" onclick="show('vitamin')">💊 영양제</div>
-      <div class="nav-buttons">
-        <button onclick="back()">⬅ 이전</button>
-        <button onclick="home()">🏠 처음으로</button>
-      </div>
-    </div>
-
-    <!-- 여름 상품 -->
+    <!-- 🌞 여름 상품 -->
     <div id="summer" style="display:none;">
       <a class="product-link" href="https://link.coupang.com/a/cHSuri" target="_blank">
         알리사 100단 아이스 터보 MAX 휴대용 선풍기 💰<span class="price">28,390원</span>
@@ -134,7 +97,36 @@
       </div>
     </div>
 
-    <!-- 영양제 상품 -->
+    <!-- 📱 전자제품 하위 -->
+    <div id="electronics" style="display:none;">
+      <div class="box" onclick="show('battery')">🔋 보조배터리</div>
+      <div class="nav-buttons">
+        <button onclick="back()">⬅ 이전</button>
+        <button onclick="home()">🏠 처음으로</button>
+      </div>
+    </div>
+
+    <!-- 🔋 보조배터리 상품 -->
+    <div id="battery" style="display:none;">
+      <a class="product-link" href="https://link.coupang.com/a/cHUGCp" target="_blank">
+        샤오미 7세대 10000mAh 22.5W 대용량 고속 충전 보조배터리 💰<span class="price">22,900원</span>
+      </a>
+      <div class="nav-buttons">
+        <button onclick="back()">⬅ 이전</button>
+        <button onclick="home()">🏠 처음으로</button>
+      </div>
+    </div>
+
+    <!-- 📁 건강 하위 -->
+    <div id="health" style="display:none;">
+      <div class="box" onclick="show('vitamin')">💊 영양제</div>
+      <div class="nav-buttons">
+        <button onclick="back()">⬅ 이전</button>
+        <button onclick="home()">🏠 처음으로</button>
+      </div>
+    </div>
+
+    <!-- 💊 영양제 상품 -->
     <div id="vitamin" style="display:none;">
       <a class="product-link" href="https://link.coupang.com/a/cHUgZR" target="_blank">
         종근당건강 헬씨칸 로얄 밀크씨슬 30정 (6개) 💰<span class="price">33,240원</span>
@@ -151,14 +143,14 @@
     const historyStack = [];
 
     function show(id) {
-      const views = ["main", "daily", "health", "summer", "vitamin"];
+      const views = ["main", "daily", "health", "summer", "vitamin", "electronics", "battery"];
       views.forEach(view => document.getElementById(view).style.display = "none");
       document.getElementById(id).style.display = "block";
       historyStack.push(id);
     }
 
     function back() {
-      historyStack.pop(); // 현재 화면 제거
+      historyStack.pop(); // 현재 뷰 제거
       const prev = historyStack[historyStack.length - 1] || "main";
       showDirect(prev);
     }
@@ -169,7 +161,7 @@
     }
 
     function showDirect(id) {
-      const views = ["main", "daily", "health", "summer", "vitamin"];
+      const views = ["main", "daily", "health", "summer", "vitamin", "electronics", "battery"];
       views.forEach(view => document.getElementById(view).style.display = "none");
       document.getElementById(id).style.display = "block";
     }
