@@ -60,6 +60,14 @@
       transition: background-color 0.2s ease;
     }
     .nav-buttons button:hover { background-color: #ccc; }
+    #searchInput {
+      width: 100%;
+      padding: 12px 16px;
+      margin-bottom: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
     @media (max-width: 480px) {
       .box { font-size: 16px; padding: 16px; }
       .product-link { font-size: 15px; padding: 12px 14px; }
@@ -69,6 +77,12 @@
 </head>
 <body>
   <div class="container">
+
+    <!-- 🔍 검색 입력창 -->
+    <input type="text" id="searchInput" placeholder="상품명을 검색해보세요!" onkeyup="searchProducts()" />
+
+    <!-- 🔍 검색 결과 표시 -->
+    <div id="searchResults" style="margin-bottom: 30px;"></div>
 
     <!-- 메인 메뉴 -->
     <div id="main">
@@ -150,7 +164,7 @@
     }
 
     function back() {
-      historyStack.pop(); // 현재 뷰 제거
+      historyStack.pop();
       const prev = historyStack[historyStack.length - 1] || "main";
       showDirect(prev);
     }
@@ -164,6 +178,49 @@
       const views = ["main", "daily", "health", "summer", "vitamin", "electronics", "battery"];
       views.forEach(view => document.getElementById(view).style.display = "none");
       document.getElementById(id).style.display = "block";
+    }
+
+    function searchProducts() {
+      const keyword = document.getElementById("searchInput").value.toLowerCase();
+      const resultBox = document.getElementById("searchResults");
+      resultBox.innerHTML = "";
+
+      if (!keyword.trim()) return;
+
+      const products = [
+        {
+          name: "알리사 100단 아이스 터보 MAX 휴대용 선풍기",
+          url: "https://link.coupang.com/a/cHSuri",
+          price: "28,390원"
+        },
+        {
+          name: "샤오미 7세대 10000mAh 22.5W 대용량 고속 충전 보조배터리",
+          url: "https://link.coupang.com/a/cHUGCp",
+          price: "22,900원"
+        },
+        {
+          name: "종근당건강 헬씨칸 로얄 밀크씨슬 30정 (6개)",
+          url: "https://link.coupang.com/a/cHUgZR",
+          price: "33,240원"
+        }
+      ];
+
+      const matches = products.filter(p =>
+        p.name.toLowerCase().includes(keyword)
+      );
+
+      if (matches.length === 0) {
+        resultBox.innerHTML = "<p>검색 결과가 없습니다.</p>";
+        return;
+      }
+
+      matches.forEach(p => {
+        resultBox.innerHTML += `
+          <a class="product-link" href="${p.url}" target="_blank">
+            ${p.name} 💰<span class="price">${p.price}</span>
+          </a>
+        `;
+      });
     }
   </script>
 </body>
