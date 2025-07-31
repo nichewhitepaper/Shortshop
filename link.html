@@ -2,16 +2,89 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>유튜브 채널 링크 모음</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>링크 모음</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Apple SD Gothic Neo", sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 10px;
+    }
+
+    .category-box {
+      background-color: #ffffff;
+      border: 2px solid #dcdcdc;
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    .category-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 16px;
+      color: #333333;
+    }
+
+    .product-link {
+      display: block;
+      background-color: #e9f5ff;
+      border: 1px solid #cce4f7;
+      border-radius: 12px;
+      padding: 14px 16px;
+      text-decoration: none;
+      color: #004a77;
+      font-weight: 500;
+      transition: background-color 0.2s ease;
+      margin-bottom: 12px;
+      font-size: 16px;
+    }
+
+    .product-link:hover {
+      background-color: #d4ecff;
+    }
+
+    .price {
+      font-weight: bold;
+      color: #2a7ab9;
+    }
+
+    @media (max-width: 480px) {
+      .category-box {
+        padding: 16px;
+      }
+
+      .product-link {
+        font-size: 15px;
+        padding: 12px 14px;
+      }
+
+      .category-title {
+        font-size: 18px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h2>📂 선풍기</h2>
-  <ul>
-    <li>
-      <a href="https://link.coupang.com/a/cHSuri" target="_blank" rel="noopener noreferrer">
-        🔗 여름 필수템 선풍기 보러가기
+  <div class="container">
+    <div class="category-box">
+      <div class="category-title">📂 선풍기</div>
+      <a class="product-link" href="https://link.coupang.com/a/cHSuri" target="_blank" rel="noopener noreferrer">
+        알리사 100단 아이스 터보 MAX 휴대용 선풍기 &nbsp;💰<span class="price">28,390원</span>
       </a>
-    </li>
-  </ul>
+    </div>
+  </div>
 </body>
 </html>
