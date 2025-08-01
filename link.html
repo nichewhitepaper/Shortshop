@@ -78,13 +78,11 @@
 <body>
   <div class="container">
 
-    <!-- 🔍 검색 입력창 -->
+    <!-- 🔍 검색 -->
     <input type="text" id="searchInput" placeholder="상품명을 검색해보세요!" onkeyup="searchProducts()" />
-
-    <!-- 🔍 검색 결과 표시 -->
     <div id="searchResults" style="margin-bottom: 30px;"></div>
 
-    <!-- 메인 메뉴 -->
+    <!-- 🏠 메인 화면 -->
     <div id="main">
       <div class="box" onclick="show('daily')">📁 일상</div>
       <div class="box" onclick="show('health')">📁 건강</div>
@@ -94,6 +92,7 @@
     <div id="daily" style="display:none;">
       <div class="box" onclick="show('summer')">🌞 여름</div>
       <div class="box" onclick="show('electronics')">📱 전자제품</div>
+      <div class="box" onclick="show('furniture')">🪑 가구</div>
       <div class="nav-buttons">
         <button onclick="back()">⬅ 이전</button>
         <button onclick="home()">🏠 처음으로</button>
@@ -131,6 +130,26 @@
       </div>
     </div>
 
+    <!-- 🪑 가구 하위 -->
+    <div id="furniture" style="display:none;">
+      <div class="box" onclick="show('desk')">📚 책상</div>
+      <div class="nav-buttons">
+        <button onclick="back()">⬅ 이전</button>
+        <button onclick="home()">🏠 처음으로</button>
+      </div>
+    </div>
+
+    <!-- 📚 책상 상품 -->
+    <div id="desk" style="display:none;">
+      <a class="product-link" href="https://link.coupang.com/a/cH0ZH1" target="_blank">
+        카본 패턴 1인용 게이밍 컴퓨터 철제책상 💰<span class="price">37,700원</span>
+      </a>
+      <div class="nav-buttons">
+        <button onclick="back()">⬅ 이전</button>
+        <button onclick="home()">🏠 처음으로</button>
+      </div>
+    </div>
+
     <!-- 📁 건강 하위 -->
     <div id="health" style="display:none;">
       <div class="box" onclick="show('vitamin')">💊 영양제</div>
@@ -157,7 +176,7 @@
     const historyStack = [];
 
     function show(id) {
-      const views = ["main", "daily", "health", "summer", "vitamin", "electronics", "battery"];
+      const views = ["main", "daily", "health", "summer", "vitamin", "electronics", "battery", "furniture", "desk"];
       views.forEach(view => document.getElementById(view).style.display = "none");
       document.getElementById(id).style.display = "block";
       historyStack.push(id);
@@ -175,7 +194,7 @@
     }
 
     function showDirect(id) {
-      const views = ["main", "daily", "health", "summer", "vitamin", "electronics", "battery"];
+      const views = ["main", "daily", "health", "summer", "vitamin", "electronics", "battery", "furniture", "desk"];
       views.forEach(view => document.getElementById(view).style.display = "none");
       document.getElementById(id).style.display = "block";
     }
@@ -202,6 +221,11 @@
           name: "종근당건강 헬씨칸 로얄 밀크씨슬 30정 (6개)",
           url: "https://link.coupang.com/a/cHUgZR",
           price: "33,240원"
+        },
+        {
+          name: "카본 패턴 1인용 게이밍 컴퓨터 철제책상",
+          url: "https://link.coupang.com/a/cH0ZH1",
+          price: "37,700원"
         }
       ];
 
