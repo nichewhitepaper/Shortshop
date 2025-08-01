@@ -78,17 +78,17 @@
 <body>
   <div class="container">
 
-    <!-- 🔍 검색 -->
+    <!-- 검색 -->
     <input type="text" id="searchInput" placeholder="상품명을 검색해보세요!" onkeyup="searchProducts()" />
     <div id="searchResults" style="margin-bottom: 30px;"></div>
 
-    <!-- 🏠 메인 화면 -->
+    <!-- 메인 -->
     <div id="main">
       <div class="box" onclick="show('daily')">📁 일상</div>
       <div class="box" onclick="show('health')">📁 건강</div>
     </div>
 
-    <!-- 📁 일상 하위 -->
+    <!-- 일상 -->
     <div id="daily" style="display:none;">
       <div class="box" onclick="show('summer')">🌞 여름</div>
       <div class="box" onclick="show('electronics')">📱 전자제품</div>
@@ -99,7 +99,7 @@
       </div>
     </div>
 
-    <!-- 🌞 여름 상품 -->
+    <!-- 여름 -->
     <div id="summer" style="display:none;">
       <a class="product-link" href="https://link.coupang.com/a/cHSuri" target="_blank">
         알리사 100단 아이스 터보 MAX 휴대용 선풍기 💰<span class="price">28,390원</span>
@@ -110,16 +110,17 @@
       </div>
     </div>
 
-    <!-- 📱 전자제품 하위 -->
+    <!-- 전자제품 -->
     <div id="electronics" style="display:none;">
       <div class="box" onclick="show('battery')">🔋 보조배터리</div>
+      <div class="box" onclick="show('mouse')">🖱️ 마우스</div>
       <div class="nav-buttons">
         <button onclick="back()">⬅ 이전</button>
         <button onclick="home()">🏠 처음으로</button>
       </div>
     </div>
 
-    <!-- 🔋 보조배터리 상품 -->
+    <!-- 보조배터리 -->
     <div id="battery" style="display:none;">
       <a class="product-link" href="https://link.coupang.com/a/cHUGCp" target="_blank">
         샤오미 7세대 10000mAh 22.5W 대용량 고속 충전 보조배터리 💰<span class="price">22,900원</span>
@@ -130,7 +131,18 @@
       </div>
     </div>
 
-    <!-- 🪑 가구 하위 -->
+    <!-- 마우스 -->
+    <div id="mouse" style="display:none;">
+      <a class="product-link" href="https://link.coupang.com/a/cH222G" target="_blank">
+        로지텍G G102 2세대 Lightsync 게이밍 유선 마우스 💰<span class="price">29,900원</span>
+      </a>
+      <div class="nav-buttons">
+        <button onclick="back()">⬅ 이전</button>
+        <button onclick="home()">🏠 처음으로</button>
+      </div>
+    </div>
+
+    <!-- 가구 -->
     <div id="furniture" style="display:none;">
       <div class="box" onclick="show('desk')">📚 책상</div>
       <div class="nav-buttons">
@@ -139,7 +151,7 @@
       </div>
     </div>
 
-    <!-- 📚 책상 상품 -->
+    <!-- 책상 -->
     <div id="desk" style="display:none;">
       <a class="product-link" href="https://link.coupang.com/a/cH0ZH1" target="_blank">
         카본 패턴 1인용 게이밍 컴퓨터 철제책상 💰<span class="price">37,700원</span>
@@ -150,7 +162,7 @@
       </div>
     </div>
 
-    <!-- 📁 건강 하위 -->
+    <!-- 건강 -->
     <div id="health" style="display:none;">
       <div class="box" onclick="show('vitamin')">💊 영양제</div>
       <div class="nav-buttons">
@@ -159,7 +171,7 @@
       </div>
     </div>
 
-    <!-- 💊 영양제 상품 -->
+    <!-- 영양제 -->
     <div id="vitamin" style="display:none;">
       <a class="product-link" href="https://link.coupang.com/a/cHUgZR" target="_blank">
         종근당건강 헬씨칸 로얄 밀크씨슬 30정 (6개) 💰<span class="price">33,240원</span>
@@ -176,7 +188,10 @@
     const historyStack = [];
 
     function show(id) {
-      const views = ["main", "daily", "health", "summer", "vitamin", "electronics", "battery", "furniture", "desk"];
+      const views = [
+        "main", "daily", "health", "summer", "vitamin",
+        "electronics", "battery", "furniture", "desk", "mouse"
+      ];
       views.forEach(view => document.getElementById(view).style.display = "none");
       document.getElementById(id).style.display = "block";
       historyStack.push(id);
@@ -194,7 +209,10 @@
     }
 
     function showDirect(id) {
-      const views = ["main", "daily", "health", "summer", "vitamin", "electronics", "battery", "furniture", "desk"];
+      const views = [
+        "main", "daily", "health", "summer", "vitamin",
+        "electronics", "battery", "furniture", "desk", "mouse"
+      ];
       views.forEach(view => document.getElementById(view).style.display = "none");
       document.getElementById(id).style.display = "block";
     }
@@ -226,6 +244,11 @@
           name: "카본 패턴 1인용 게이밍 컴퓨터 철제책상",
           url: "https://link.coupang.com/a/cH0ZH1",
           price: "37,700원"
+        },
+        {
+          name: "로지텍G G102 2세대 Lightsync 게이밍 유선 마우스",
+          url: "https://link.coupang.com/a/cH222G",
+          price: "29,900원"
         }
       ];
 
